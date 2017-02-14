@@ -15,7 +15,7 @@ void mystrfunc(char *buf, int buflen, int key, int *elem)
 
 
 
-int main(int argc, char **argv){
+int main(){
 
 	int i;
 	long test[1024];
@@ -31,10 +31,10 @@ int main(int argc, char **argv){
 	for(i = 0; i < 1024; i++)
 		test[i] = rand() % 512;
 
-	for (i = 0; i < 64; i++)
+	for (i = 0; i < 64; i++){
 		printf("%ld ", test[i]);
 		tree_insert(tree, (void*)test[i], &test[i]);
-
+	}
 
 	tree_plot(tree, "TheTree");
 	

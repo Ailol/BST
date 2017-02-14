@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 typedef struct node node_t;
 struct node{
 	void   *elem;
@@ -83,10 +82,10 @@ node_t *_tree_insert(tree_t *tree, node_t *node, node_t *new){
 	
 	if(tree->cmpfunc(node->key, new->key) < 0)
 		node->left = _tree_insert(tree, node->left, new);
-	else
+	else if(tree->cmpfunc(node->key, new->key) > 0)
 		node->right = _tree_insert(tree, node->right, new);
-	
-	return new;
+
+	return node;
 }
 
 int tree_insert(tree_t *tree, void *key, void *elem){
@@ -157,11 +156,6 @@ node_t *_tree_print(tree_t *tree, node_t *node){
 }
 
 void tree_print(tree_t *tree){
-	
-	if(tree == NULL){
-		return -1;
-	}
+
 	_tree_print(tree, tree->root);
-
-
 }
